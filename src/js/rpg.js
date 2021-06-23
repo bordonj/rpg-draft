@@ -54,4 +54,7 @@ export class CharacterClasses {
     let newChar = this.chosenClass;
     return chosenClass;
   }
+  lvlUp() {
+
+  }
 }

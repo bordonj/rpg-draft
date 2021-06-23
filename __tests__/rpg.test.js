@@ -15,7 +15,13 @@ describe('CharacterClasses', () => {
     console.log(characterClasses);
     console.log(newChar);
     expect(newChar).toEqual(characterClasses.mage);
-  })
+  });
+  test('should increase player lvl and respective stats', () => {
+    const characterClasses = new CharacterClasses();
+    let newChar = characterClasses.newChar(characterClasses.mage);
+    characterClasses.lvlUp();
+    expect(newChar.lvl).toEqual(2);
+  });
 });
 
 
