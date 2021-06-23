@@ -40,12 +40,9 @@ export class CharacterClasses {
       stl: 5,
       res: 9
     };
-    return 'CharacterClasses made';
+  }
+  newChar(chosenClass) {
+    
   }
 }
 
-// export class  {
-//   constructor(wizard, warrior, etc) {
-//     player = new Player (Wizard, 100, 100, 10, 10, 10)
-//   }
-// }
