@@ -1,6 +1,7 @@
 export class CharacterClasses {
   constructor() {
     this.mage = { //184
+      type: "mage",
       hp: 50,
       mp: 100,
       str: 4,
@@ -11,6 +12,7 @@ export class CharacterClasses {
       res: 10
     };
     this.barbarian = { //184
+      type: "barbarian",
       hp: 125,
       mp: 30,
       str: 10,
@@ -21,6 +23,7 @@ export class CharacterClasses {
       res: 2
     };
     this.assassin = { //184
+      type: "assassin",
       hp: 70,
       mp: 70,
       str: 8,
@@ -31,6 +34,7 @@ export class CharacterClasses {
       res: 5
     };
     this.necromancer = { //184
+      type: "necromancer",
       hp: 50,
       mp: 100,
       str: 5,
@@ -42,7 +46,8 @@ export class CharacterClasses {
     };
   }
   newChar(chosenClass) {
-    
+    this.chosenClass = chosenClass;
+    let newChar = this.chosenClass;
+    return chosenClass;
   }
 }
-
