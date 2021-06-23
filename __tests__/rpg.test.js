@@ -22,6 +22,13 @@ describe('CharacterClasses', () => {
     characterClasses.lvlUp();
     expect(newChar.lvl).toEqual(2);
   });
+  test('should create add inventory method', () => {
+    const characterClasses = new CharacterClasses();
+    let newChar = characterClasses.newChar
+    (characterClasses.mage);
+    characterClasses.addItem("staff");
+    expect(newChar.inv).toEqual(["staff"]);
+    })
 });
 
 

@@ -71,4 +71,6 @@ export class CharacterClasses {
     newChar['res']++;
     console.log('lvl newChar', newChar)
   }
+  addItem(item) {
+  }
 }
