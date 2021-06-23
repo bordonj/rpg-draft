@@ -2,6 +2,7 @@ export class CharacterClasses {
   constructor() {
     this.mage = { //184
       type: "mage",
+      lvl: 1,
       hp: 50,
       mp: 100,
       str: 4,
@@ -13,6 +14,7 @@ export class CharacterClasses {
     };
     this.barbarian = { //184
       type: "barbarian",
+      lvl: 1,
       hp: 125,
       mp: 30,
       str: 10,
@@ -24,6 +26,7 @@ export class CharacterClasses {
     };
     this.assassin = { //184
       type: "assassin",
+      lvl: 1,
       hp: 70,
       mp: 70,
       str: 8,
@@ -35,6 +38,7 @@ export class CharacterClasses {
     };
     this.necromancer = { //184
       type: "necromancer",
+      lvl: 1,
       hp: 50,
       mp: 100,
       str: 5,
