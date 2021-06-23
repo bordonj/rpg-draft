@@ -55,6 +55,16 @@ export class CharacterClasses {
     return chosenClass;
   }
   lvlUp() {
-
+    let newChar = this.chosenClass;
+    newChar['lvl']++;
+    newChar['hp'] += 10;
+    newChar['mp'] += 10;
+    newChar['str']++;
+    newChar['spd']++;
+    newChar['def']++;
+    newChar['int']++;
+    newChar['stl']++;
+    newChar['res']++;
+    console.log('lvl newChar', newChar)
   }
 }
