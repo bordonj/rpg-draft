@@ -72,5 +72,8 @@ export class CharacterClasses {
     console.log('lvl newChar', newChar)
   }
   addItem(item) {
+  let newChar = this.chosenClass;
+  newChar['inv'].push(item);
+  console.log(newChar);
   }
 }
