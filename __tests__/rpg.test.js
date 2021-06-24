@@ -50,13 +50,38 @@ describe('CharacterClasses', () => {
     // characterClasses.buyItem(1, 'dagger');
     expect(characterClasses.buyItem(1, 'dagger')).toEqual('item bought');
   })
-  test('should create sell method that sells item and gains coins if item in inventory', () => {
+  test('should create sell method that shows you sold item if sold item', () => {
     const characterClasses = new CharacterClasses();
     let newChar = characterClasses.newChar(characterClasses.mage);
     characterClasses.addItem(1, "staff");
     // characterClasses.sellItem(1, 'staff');
     // console.log('test charClass', characterClasses.sellItem());
     expect(characterClasses.sellItem(1, 'staff')).toEqual('sold item');
+  })
+  test('should test sellItem() to show you cannot sell something you do not have', () => {
+    const characterClasses = new CharacterClasses();
+    let newChar = characterClasses.newChar(characterClasses.mage);
+    characterClasses.addItem(1, "staff");
+    // characterClasses.sellItem(1, 'staff');
+    // console.log('test charClass', characterClasses.sellItem());
+    expect(characterClasses.sellItem(1, 'banana')).toEqual('item not in inventory');
+  })
+  test('should test sellItem() to show you gained coins after selling item', () => {
+    const characterClasses = new CharacterClasses();
+    let newChar = characterClasses.newChar(characterClasses.mage);
+    characterClasses.addItem(1, "staff");
+    characterClasses.sellItem(1, 'staff');
+    // console.log('test charClass', characterClasses.sellItem());
+    expect(newChar.cns).toEqual(10);
+  })
+  test('should test sellItem() to show your inventory decreased after selling item', () => {
+    const characterClasses = new CharacterClasses();
+    let newChar = characterClasses.newChar(characterClasses.mage);
+    characterClasses.addItem(1, "staff");
+    let invOgLength = newChar.inv.length;
+    characterClasses.sellItem(1, 'staff');
+    // console.log('test charClass', characterClasses.sellItem());
+    expect(newChar.inv.length).toEqual(invOgLength-1);
   })
 });
 

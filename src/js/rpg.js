@@ -106,30 +106,30 @@ export class CharacterClasses {
   sellItem(charNum, item) {
     let newChar = this.chosenClass.get(charNum);
     console.log('newChar inv', newChar.inv);
-    for (let i = 0; i <= newChar.inv.length; i++) {
-      if (newChar.inv[i] === item) {
-        newChar.inv.splice(i, 1);
-        newChar.cns += 10;
-        return 'sold item'; //why does the return statement not work?!
-      } else {
-        return 'item not in inventory'; //why does the return statement not work?!
-      }
-    }
-
-    // if (newChar.inv.includes(item)) {
-    //   console.log('newChar inv', newChar.inv);
-    //   for (let i = 0; i < newChar.inv.length; i++) {
-    //     console.log('newChar inv[i]', newChar.inv[i]);
-    //     if (newChar.inv[i] === item) {
-    //       newChar.inv.splice(i, 1);
-    //       newChar.cns += 10;
-    //       console.log('newChar sold item', newChar);
-    //     } 
+    // for (let i = 0; i <= newChar.inv.length; i++) {
+    //   if (newChar.inv[i] === item) {
+    //     newChar.inv.splice(i, 1);
+    //     newChar.cns += 10;
+    //     return 'sold item'; //why does the return statement not work?!
+    //   } else {
+    //     return 'item not in inventory'; //why does the return statement not work?!
     //   }
-    //   return 'item sold';
-    // } else {
-    //   return 'item not in inventory';
     // }
+
+    if (newChar.inv.includes(item)) {
+      console.log('newChar inv', newChar.inv);
+      for (let i = 0; i < newChar.inv.length; i++) {
+        console.log('newChar inv[i]', newChar.inv[i]);
+        if (newChar.inv[i] === item) {
+          newChar.inv.splice(i, 1);
+          newChar.cns += 10;
+          console.log('newChar sold item', newChar);
+        } 
+      }
+      return 'sold item';
+    } else {
+      return 'item not in inventory';
+    }
 
   }
 
