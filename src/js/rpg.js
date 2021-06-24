@@ -4,6 +4,7 @@ export class CharacterClasses {
       type: "mage",
       lvl: 1,
       inv: [],
+      cns: 0,
       hp: 50,
       mp: 100,
       str: 4,
@@ -17,6 +18,7 @@ export class CharacterClasses {
       type: "barbarian",
       lvl: 1,
       inv: [],
+      cns: 0,
       hp: 125,
       mp: 30,
       str: 10,
@@ -30,6 +32,7 @@ export class CharacterClasses {
       type: "assassin",
       lvl: 1,
       inv: [],  
+      cns: 0,
       hp: 70,
       mp: 70,
       str: 8,
@@ -43,6 +46,7 @@ export class CharacterClasses {
       type: "necromancer",
       lvl: 1,
       inv: [],  
+      cns: 0,
       hp: 50,
       mp: 100,
       str: 5,
@@ -52,14 +56,20 @@ export class CharacterClasses {
       stl: 5,
       res: 9
     };
+    this.chosenClass = new Map();
+    this.totalChars = 0;
   }
   newChar(chosenClass) {
-    this.chosenClass = chosenClass;
-    let newChar = this.chosenClass;
-    return chosenClass;
+    // this.chosenClass[chosenClass.type] = chosenClass;
+    this.totalChars++;
+    this.chosenClass.set(this.totalChars, chosenClass)
+    // this.newPlayer['chosenClass'] = chosenClass;
+    // this.newPlayer = chosenClass;
+    // console.log('this object', this);
+    return this.chosenClass.get(this.totalChars);
   }
-  lvlUp() {
-    let newChar = this.chosenClass;
+  lvlUp(charNum) {
+    let newChar = this.chosenClass.get(charNum);
     newChar['lvl']++;
     newChar['hp'] += 10;
     newChar['mp'] += 10;
@@ -69,20 +79,58 @@ export class CharacterClasses {
     newChar['int']++;
     newChar['stl']++;
     newChar['res']++;
-    // console.log('lvl newChar', newChar)
   }
-  addItem(item) {
-  let newChar = this.chosenClass;
-  newChar['inv'].push(item);
-  // console.log(newChar);
+  addItem(charNum, item) {
+    let newChar = this.chosenClass.get(charNum);
+    newChar['inv'].push(item);
   }
-  dropItem(item) {
-    let newChar = this.chosenClass;
+  dropItem(charNum, item) {
+    let newChar = this.chosenClass.get(charNum);
     for (let i = 0; i < newChar['inv'].length; i++) {
       if (newChar['inv'][i] === item) {
         newChar['inv'].splice(i, 1);
       }
     }
-    console.log('drop item', newChar);
   }
+  buyItem(charNum, item) {
+    let newChar = this.chosenClass.get(charNum);
+    // console.log('rpg.js neChar', newChar)
+    if (newChar.cns >= 10 ) {
+      newChar.cns -= 10; //needed to mutate coins, not just make it 10
+      newChar['inv'].push(item);
+      return 'item bought';
+    } else {
+      return 'not enough coins';
+    }
+  }
+  sellItem(charNum, item) {
+    let newChar = this.chosenClass.get(charNum);
+    console.log('newChar inv', newChar.inv);
+    for (let i = 0; i <= newChar.inv.length; i++) {
+      if (newChar.inv[i] === item) {
+        newChar.inv.splice(i, 1);
+        newChar.cns += 10;
+        return 'sold item'; //why does the return statement not work?!
+      } else {
+        return 'item not in inventory'; //why does the return statement not work?!
+      }
+    }
+
+    // if (newChar.inv.includes(item)) {
+    //   console.log('newChar inv', newChar.inv);
+    //   for (let i = 0; i < newChar.inv.length; i++) {
+    //     console.log('newChar inv[i]', newChar.inv[i]);
+    //     if (newChar.inv[i] === item) {
+    //       newChar.inv.splice(i, 1);
+    //       newChar.cns += 10;
+    //       console.log('newChar sold item', newChar);
+    //     } 
+    //   }
+    //   return 'item sold';
+    // } else {
+    //   return 'item not in inventory';
+    // }
+
+  }
+
 }
