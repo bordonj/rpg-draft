@@ -12,8 +12,8 @@ describe('CharacterClasses', () => {
   test('should create a player object', () => {
     const characterClasses = new CharacterClasses();
     let newChar = characterClasses.newChar(characterClasses.mage);
-    console.log(characterClasses);
-    console.log(newChar);
+    // console.log(characterClasses);
+    // console.log(newChar);
     expect(newChar).toEqual(characterClasses.mage);
   });
   test('should increase player lvl and respective stats', () => {
@@ -28,7 +28,15 @@ describe('CharacterClasses', () => {
     (characterClasses.mage);
     characterClasses.addItem("staff");
     expect(newChar.inv).toEqual(["staff"]);
-    })
+  })
+  test('should create drop method', () => {
+    const characterClasses = new CharacterClasses();
+    let newChar = characterClasses.newChar
+    (characterClasses.mage);
+    characterClasses.addItem("staff");
+    characterClasses.dropItem('staff');
+    expect(newChar.inv).toEqual([]);
+  })
 });
 
 

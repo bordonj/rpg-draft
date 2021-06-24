@@ -69,11 +69,20 @@ export class CharacterClasses {
     newChar['int']++;
     newChar['stl']++;
     newChar['res']++;
-    console.log('lvl newChar', newChar)
+    // console.log('lvl newChar', newChar)
   }
   addItem(item) {
   let newChar = this.chosenClass;
   newChar['inv'].push(item);
-  console.log(newChar);
+  // console.log(newChar);
+  }
+  dropItem(item) {
+    let newChar = this.chosenClass;
+    for (let i = 0; i < newChar['inv'].length; i++) {
+      if (newChar['inv'][i] === item) {
+        newChar['inv'].splice(i, 1);
+      }
+    }
+    console.log('drop item', newChar);
   }
 }
